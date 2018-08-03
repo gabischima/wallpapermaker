@@ -102,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="204" y="327"/>
+            <point key="canvasLocation" x="218" y="327"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="mDJ-iJ-BcT">
@@ -121,12 +121,21 @@
                                     <segue destination="BYZ-38-t0r" kind="embed" identifier="homeToContainer" id="Vyd-S6-TOT"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgE-5d-hZA">
+                                <rect key="frame" x="301" y="36" width="58" height="30"/>
+                                <state key="normal" title="Add text"/>
+                                <connections>
+                                    <action selector="addText:" destination="m20-ga-H3t" eventType="touchUpInside" id="OjL-bY-Cyd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hh9-md-c0Y" firstAttribute="leading" secondItem="CZL-JJ-EBw" secondAttribute="leading" id="Dod-fC-LZ8"/>
                             <constraint firstItem="hh9-md-c0Y" firstAttribute="trailing" secondItem="CZL-JJ-EBw" secondAttribute="trailing" id="Xtq-r0-Opi"/>
                             <constraint firstItem="hh9-md-c0Y" firstAttribute="centerX" secondItem="KFw-fo-eX8" secondAttribute="centerX" id="hcE-1O-vNl"/>
+                            <constraint firstItem="OgE-5d-hZA" firstAttribute="top" secondItem="CZL-JJ-EBw" secondAttribute="top" constant="16" id="kMA-8V-kfK"/>
+                            <constraint firstItem="CZL-JJ-EBw" firstAttribute="trailing" secondItem="OgE-5d-hZA" secondAttribute="trailing" constant="16" id="kNg-Gn-1aj"/>
                             <constraint firstItem="hh9-md-c0Y" firstAttribute="bottom" secondItem="CZL-JJ-EBw" secondAttribute="bottom" id="t3d-N2-l8Y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CZL-JJ-EBw"/>
