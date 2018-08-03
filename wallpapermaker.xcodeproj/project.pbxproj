@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8692709A2114B0800043896F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869270992114B0800043896F /* AppDelegate.swift */; };
+		8692709C2114B0800043896F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692709B2114B0800043896F /* ViewController.swift */; };
+		8692709F2114B0800043896F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8692709D2114B0800043896F /* Main.storyboard */; };
+		869270A12114B0820043896F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 869270A02114B0820043896F /* Assets.xcassets */; };
+		869270A42114B0820043896F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 869270A22114B0820043896F /* LaunchScreen.storyboard */; };
+		869270AF2114B0820043896F /* wallpapermakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869270AE2114B0820043896F /* wallpapermakerTests.swift */; };
+		869270BA2114B0820043896F /* wallpapermakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869270B92114B0820043896F /* wallpapermakerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		869270AB2114B0820043896F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8692708E2114B07F0043896F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 869270952114B0800043896F;
+			remoteInfo = wallpapermaker;
+		};
+		869270B62114B0820043896F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8692708E2114B07F0043896F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 869270952114B0800043896F;
+			remoteInfo = wallpapermaker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		869270962114B0800043896F /* wallpapermaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wallpapermaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		869270992114B0800043896F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8692709B2114B0800043896F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8692709E2114B0800043896F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		869270A02114B0820043896F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		869270A32114B0820043896F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		869270A52114B0820043896F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		869270AA2114B0820043896F /* wallpapermakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wallpapermakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		869270AE2114B0820043896F /* wallpapermakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wallpapermakerTests.swift; sourceTree = "<group>"; };
+		869270B02114B0820043896F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		869270B52114B0820043896F /* wallpapermakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wallpapermakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		869270B92114B0820043896F /* wallpapermakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wallpapermakerUITests.swift; sourceTree = "<group>"; };
+		869270BB2114B0820043896F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		869270932114B0800043896F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		869270A72114B0820043896F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		869270B22114B0820043896F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8692708D2114B07F0043896F = {
+			isa = PBXGroup;
+			children = (
+				869270982114B0800043896F /* wallpapermaker */,
+				869270AD2114B0820043896F /* wallpapermakerTests */,
+				869270B82114B0820043896F /* wallpapermakerUITests */,
+				869270972114B0800043896F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		869270972114B0800043896F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				869270962114B0800043896F /* wallpapermaker.app */,
+				869270AA2114B0820043896F /* wallpapermakerTests.xctest */,
+				869270B52114B0820043896F /* wallpapermakerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		869270982114B0800043896F /* wallpapermaker */ = {
+			isa = PBXGroup;
+			children = (
+				869270992114B0800043896F /* AppDelegate.swift */,
+				8692709B2114B0800043896F /* ViewController.swift */,
+				8692709D2114B0800043896F /* Main.storyboard */,
+				869270A02114B0820043896F /* Assets.xcassets */,
+				869270A22114B0820043896F /* LaunchScreen.storyboard */,
+				869270A52114B0820043896F /* Info.plist */,
+			);
+			path = wallpapermaker;
+			sourceTree = "<group>";
+		};
+		869270AD2114B0820043896F /* wallpapermakerTests */ = {
+			isa = PBXGroup;
+			children = (
+				869270AE2114B0820043896F /* wallpapermakerTests.swift */,
+				869270B02114B0820043896F /* Info.plist */,
+			);
+			path = wallpapermakerTests;
+			sourceTree = "<group>";
+		};
+		869270B82114B0820043896F /* wallpapermakerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				869270B92114B0820043896F /* wallpapermakerUITests.swift */,
+				869270BB2114B0820043896F /* Info.plist */,
+			);
+			path = wallpapermakerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		869270952114B0800043896F /* wallpapermaker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 869270BE2114B0820043896F /* Build configuration list for PBXNativeTarget "wallpapermaker" */;
+			buildPhases = (
+				869270922114B0800043896F /* Sources */,
+				869270932114B0800043896F /* Frameworks */,
+				869270942114B0800043896F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = wallpapermaker;
+			productName = wallpapermaker;
+			productReference = 869270962114B0800043896F /* wallpapermaker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		869270A92114B0820043896F /* wallpapermakerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 869270C12114B0820043896F /* Build configuration list for PBXNativeTarget "wallpapermakerTests" */;
+			buildPhases = (
+				869270A62114B0820043896F /* Sources */,
+				869270A72114B0820043896F /* Frameworks */,
+				869270A82114B0820043896F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				869270AC2114B0820043896F /* PBXTargetDependency */,
+			);
+			name = wallpapermakerTests;
+			productName = wallpapermakerTests;
+			productReference = 869270AA2114B0820043896F /* wallpapermakerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		869270B42114B0820043896F /* wallpapermakerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 869270C42114B0820043896F /* Build configuration list for PBXNativeTarget "wallpapermakerUITests" */;
+			buildPhases = (
+				869270B12114B0820043896F /* Sources */,
+				869270B22114B0820043896F /* Frameworks */,
+				869270B32114B0820043896F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				869270B72114B0820043896F /* PBXTargetDependency */,
+			);
+			name = wallpapermakerUITests;
+			productName = wallpapermakerUITests;
+			productReference = 869270B52114B0820043896F /* wallpapermakerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8692708E2114B07F0043896F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = gabischima;
+				TargetAttributes = {
+					869270952114B0800043896F = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					869270A92114B0820043896F = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 869270952114B0800043896F;
+					};
+					869270B42114B0820043896F = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 869270952114B0800043896F;
+					};
+				};
+			};
+			buildConfigurationList = 869270912114B07F0043896F /* Build configuration list for PBXProject "wallpapermaker" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8692708D2114B07F0043896F;
+			productRefGroup = 869270972114B0800043896F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				869270952114B0800043896F /* wallpapermaker */,
+				869270A92114B0820043896F /* wallpapermakerTests */,
+				869270B42114B0820043896F /* wallpapermakerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		869270942114B0800043896F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				869270A42114B0820043896F /* LaunchScreen.storyboard in Resources */,
+				869270A12114B0820043896F /* Assets.xcassets in Resources */,
+				8692709F2114B0800043896F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		869270A82114B0820043896F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		869270B32114B0820043896F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		869270922114B0800043896F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8692709C2114B0800043896F /* ViewController.swift in Sources */,
+				8692709A2114B0800043896F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		869270A62114B0820043896F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				869270AF2114B0820043896F /* wallpapermakerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		869270B12114B0820043896F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				869270BA2114B0820043896F /* wallpapermakerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		869270AC2114B0820043896F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 869270952114B0800043896F /* wallpapermaker */;
+			targetProxy = 869270AB2114B0820043896F /* PBXContainerItemProxy */;
+		};
+		869270B72114B0820043896F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 869270952114B0800043896F /* wallpapermaker */;
+			targetProxy = 869270B62114B0820043896F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8692709D2114B0800043896F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8692709E2114B0800043896F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		869270A22114B0820043896F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				869270A32114B0820043896F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		869270BC2114B0820043896F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		869270BD2114B0820043896F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		869270BF2114B0820043896F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X8JS4RXWL;
+				INFOPLIST_FILE = wallpapermaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabischima.wallpapermaker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		869270C02114B0820043896F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X8JS4RXWL;
+				INFOPLIST_FILE = wallpapermaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabischima.wallpapermaker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		869270C22114B0820043896F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X8JS4RXWL;
+				INFOPLIST_FILE = wallpapermakerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabischima.wallpapermakerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wallpapermaker.app/wallpapermaker";
+			};
+			name = Debug;
+		};
+		869270C32114B0820043896F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X8JS4RXWL;
+				INFOPLIST_FILE = wallpapermakerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabischima.wallpapermakerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wallpapermaker.app/wallpapermaker";
+			};
+			name = Release;
+		};
+		869270C52114B0820043896F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X8JS4RXWL;
+				INFOPLIST_FILE = wallpapermakerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabischima.wallpapermakerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = wallpapermaker;
+			};
+			name = Debug;
+		};
+		869270C62114B0820043896F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X8JS4RXWL;
+				INFOPLIST_FILE = wallpapermakerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gabischima.wallpapermakerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = wallpapermaker;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		869270912114B07F0043896F /* Build configuration list for PBXProject "wallpapermaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				869270BC2114B0820043896F /* Debug */,
+				869270BD2114B0820043896F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		869270BE2114B0820043896F /* Build configuration list for PBXNativeTarget "wallpapermaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				869270BF2114B0820043896F /* Debug */,
+				869270C02114B0820043896F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		869270C12114B0820043896F /* Build configuration list for PBXNativeTarget "wallpapermakerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				869270C22114B0820043896F /* Debug */,
+				869270C32114B0820043896F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		869270C42114B0820043896F /* Build configuration list for PBXNativeTarget "wallpapermakerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				869270C52114B0820043896F /* Debug */,
+				869270C62114B0820043896F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8692708E2114B07F0043896F /* Project object */;
+}
