@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		8692709A2114B0800043896F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869270992114B0800043896F /* AppDelegate.swift */; };
-		8692709C2114B0800043896F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692709B2114B0800043896F /* ViewController.swift */; };
+		8692709C2114B0800043896F /* ColorGradientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692709B2114B0800043896F /* ColorGradientViewController.swift */; };
 		8692709F2114B0800043896F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8692709D2114B0800043896F /* Main.storyboard */; };
 		869270A12114B0820043896F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 869270A02114B0820043896F /* Assets.xcassets */; };
 		869270A42114B0820043896F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 869270A22114B0820043896F /* LaunchScreen.storyboard */; };
 		869270AF2114B0820043896F /* wallpapermakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869270AE2114B0820043896F /* wallpapermakerTests.swift */; };
 		869270BA2114B0820043896F /* wallpapermakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869270B92114B0820043896F /* wallpapermakerUITests.swift */; };
+		869270C82114DA8E0043896F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869270C72114DA8E0043896F /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		869270962114B0800043896F /* wallpapermaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wallpapermaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		869270992114B0800043896F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8692709B2114B0800043896F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8692709B2114B0800043896F /* ColorGradientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGradientViewController.swift; sourceTree = "<group>"; };
 		8692709E2114B0800043896F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		869270A02114B0820043896F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		869270A32114B0820043896F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		869270B52114B0820043896F /* wallpapermakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wallpapermakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		869270B92114B0820043896F /* wallpapermakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wallpapermakerUITests.swift; sourceTree = "<group>"; };
 		869270BB2114B0820043896F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		869270C72114DA8E0043896F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				869270992114B0800043896F /* AppDelegate.swift */,
-				8692709B2114B0800043896F /* ViewController.swift */,
+				8692709B2114B0800043896F /* ColorGradientViewController.swift */,
+				869270C72114DA8E0043896F /* HomeViewController.swift */,
 				8692709D2114B0800043896F /* Main.storyboard */,
 				869270A02114B0820043896F /* Assets.xcassets */,
 				869270A22114B0820043896F /* LaunchScreen.storyboard */,
@@ -135,6 +138,7 @@
 				869270922114B0800043896F /* Sources */,
 				869270932114B0800043896F /* Frameworks */,
 				869270942114B0800043896F /* Resources */,
+				869270C92114DB550043896F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -251,12 +255,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		869270C92114DB550043896F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		869270922114B0800043896F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8692709C2114B0800043896F /* ViewController.swift in Sources */,
+				869270C82114DA8E0043896F /* HomeViewController.swift in Sources */,
+				8692709C2114B0800043896F /* ColorGradientViewController.swift in Sources */,
 				8692709A2114B0800043896F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
