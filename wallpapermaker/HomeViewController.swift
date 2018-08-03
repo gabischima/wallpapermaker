@@ -40,6 +40,19 @@ class HomeViewController: UIViewController, UITextViewDelegate, UIGestureRecogni
         self.view.addSubview(textView)
         textView.delegate = self
         textView.becomeFirstResponder()
+        
+        var panGesture  = UIPanGestureRecognizer()
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(draggedView(_:)))
+        textView.isUserInteractionEnabled = true
+        textView.addGestureRecognizer(panGesture)
+    }
+    
+    @objc func draggedView(_ sender:UIPanGestureRecognizer) {
+        let dragView = sender.view
+        self.view.bringSubview(toFront: dragView!)
+        let translation = sender.translation(in: self.view)
+        dragView?.center = CGPoint(x: dragView.center.x + translation.x, y: dragView.center.y + translation.y)
+        sender.setTranslation(CGPoint.zero, in: self.view)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
