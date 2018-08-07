@@ -57,8 +57,8 @@ class ColorGradientViewController: UIViewController {
     func setGradientLayer() {
         
         saturationGradientLayer.colors = [
-            UIColor(hue: CGFloat(huePicker.value) / 360, saturation: 0, brightness: CGFloat(brightnessPicker.value) / 100, alpha: 1).cgColor,
-            UIColor(hue: CGFloat(huePicker.value) / 360, saturation: 1, brightness: CGFloat(brightnessPicker.value) / 100, alpha: 1).cgColor,
+            UIColor(hue: CGFloat(huePicker.value) / 360, saturation: 0, brightness: 1.0, alpha: 1).cgColor,
+            UIColor(hue: CGFloat(huePicker.value) / 360, saturation: 1, brightness: 1.0, alpha: 1).cgColor,
         ]
         
         brightnessGradientLayer.colors = [
@@ -67,13 +67,13 @@ class ColorGradientViewController: UIViewController {
         ]
         
         hueGradientLayer.colors = [
-            UIColor(hue: 0, saturation: CGFloat(saturationPicker.value) / 100, brightness: CGFloat(brightnessPicker.value) / 100, alpha: 1).cgColor,
-            UIColor(hue: 0.17, saturation: CGFloat(saturationPicker.value) / 100, brightness: CGFloat(brightnessPicker.value) / 100, alpha: 1).cgColor,
-            UIColor(hue: 0.33, saturation: CGFloat(saturationPicker.value) / 100, brightness: CGFloat(brightnessPicker.value) / 100, alpha: 1).cgColor,
-            UIColor(hue: 0.5, saturation: CGFloat(saturationPicker.value) / 100, brightness: CGFloat(brightnessPicker.value) / 100, alpha: 1).cgColor,
-            UIColor(hue: 0.67, saturation: CGFloat(saturationPicker.value) / 100, brightness: CGFloat(brightnessPicker.value) / 100, alpha: 1).cgColor,
-            UIColor(hue: 0.83, saturation: CGFloat(saturationPicker.value) / 100, brightness: CGFloat(brightnessPicker.value) / 100, alpha: 1).cgColor,
-            UIColor(hue: 1, saturation: CGFloat(saturationPicker.value) / 100, brightness: CGFloat(brightnessPicker.value) / 100, alpha: 1).cgColor,
+            UIColor(hue: 0, saturation: 1.0, brightness: 1.0, alpha: 1).cgColor,
+            UIColor(hue: 0.17, saturation: 1.0, brightness: 1.0, alpha: 1).cgColor,
+            UIColor(hue: 0.33, saturation: 1.0, brightness: 1.0, alpha: 1).cgColor,
+            UIColor(hue: 0.5, saturation: 1.0, brightness: 1.0, alpha: 1).cgColor,
+            UIColor(hue: 0.67, saturation: 1.0, brightness: 1.0, alpha: 1).cgColor,
+            UIColor(hue: 0.83, saturation: 1.0, brightness: 1.0, alpha: 1).cgColor,
+            UIColor(hue: 1, saturation: 1.0, brightness: 1.0, alpha: 1).cgColor,
         ]
     }
     
