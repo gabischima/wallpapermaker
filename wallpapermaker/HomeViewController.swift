@@ -10,6 +10,15 @@ import UIKit
 
 class HomeViewController: UIViewController, UITextViewDelegate, UIGestureRecognizerDelegate {
     
+    var panGesture  = UIPanGestureRecognizer()
+    var pinchGesture = UIPinchGestureRecognizer()
+    var rotateGesture = UIRotationGestureRecognizer()
+    
+    var initialRotation = CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: 1.0, tx: 0.0, ty: 0.0)
+    var initialFont = UIFont.systemFont(ofSize: 16, weight: .thin)
+    
+    var textIsEditing = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -40,50 +49,116 @@ class HomeViewController: UIViewController, UITextViewDelegate, UIGestureRecogni
         self.view.addSubview(textView)
         textView.delegate = self
         textView.becomeFirstResponder()
-        textView.isUserInteractionEnabled = true
-        
-        var panGesture  = UIPanGestureRecognizer()
-        panGesture.delegate = self
-        panGesture = UIPanGestureRecognizer(target: self, action: #selector(draggedView(_:)))
+        textView.isScrollEnabled = false
+
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         textView.addGestureRecognizer(panGesture)
         
-        var pinchGesture = UIPinchGestureRecognizer()
-        pinchGesture.delegate = self
-        pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchedView(_:)))
+        pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:)))
         textView.addGestureRecognizer(pinchGesture)
-    }
-    
-    @objc func draggedView(_ sender:UIPanGestureRecognizer) {
-        let dragView = sender.view
-        self.view.bringSubview(toFront: dragView!)
-        let translation = sender.translation(in: self.view)
-        dragView?.center = CGPoint(x: (dragView?.center.x)! + translation.x, y: (dragView?.center.y)! + translation.y)
-        sender.setTranslation(CGPoint.zero, in: self.view)
-    }
-    
-    @objc func pinchedView(_ sender:UIPinchGestureRecognizer) {
-        let pinchView = sender.view as! UITextView
-        let pointSize = pinchView.font?.pointSize
-        let newSize = ((sender.velocity > 0) ? 1 : -1) * 1 + pointSize!
-        pinchView.font = UIFont( name: (pinchView.font?.fontName)!, size: max(min(newSize, 150), 8))
-        fitSize(pinchView)
-    }
-
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if (textView.text == "") {
-            textView.removeFromSuperview()
-        }
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        fitSize(textView)
+        
+        rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotate(_:)))
+        textView.addGestureRecognizer(rotateGesture)
+        
+        panGesture.delegate = self
+        pinchGesture.delegate = self
+        rotateGesture.delegate = self
+        
+        //Enable multiple touch and user interaction for textfield
+        textView.isUserInteractionEnabled = true
+        textView.isMultipleTouchEnabled = true
     }
     
     func fitSize(_ textView: UITextView) {
         let fixedSize = CGSize(width: textView.frame.size.width, height: textView.frame.size.height)
         let newSize = textView.sizeThatFits(CGSize(width: fixedSize.width, height: CGFloat.greatestFiniteMagnitude))
         textView.frame.size = CGSize(width: max(newSize.width, fixedSize.width), height: newSize.height)
-        textView.isScrollEnabled = false
+    }
+    
+    //MARK:- Handle Gestures Methods
+
+    @objc func handlePan(_ gestureRecognizer:UIPanGestureRecognizer) {
+        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+            let translation = gestureRecognizer.translation(in: self.view)
+            gestureRecognizer.view!.center = CGPoint(x: gestureRecognizer.view!.center.x + translation.x, y: gestureRecognizer.view!.center.y + translation.y)
+            gestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
+        }
+    }
+    
+    @objc func handlePinch(_ gestureRecognizer:UIPinchGestureRecognizer) {
+        if let view = gestureRecognizer.view as? UITextView {
+//            let screenScaleFactor = UIScreen.main.scale
+//            view.transform = view.transform.scaledBy(x: gestureRecognizer.scale, y: gestureRecognizer.scale)
+//            view.textInputView.contentScaleFactor = screenScaleFactor * gestureRecognizer.scale;
+            let scale = gestureRecognizer.scale
+            view.font = UIFont(name: (view.font?.fontName)!, size: (view.font?.pointSize)! * scale)
+            gestureRecognizer.scale = 1
+//            view.frame.size = CGSize(width: view.frame.width * scale, height: view.frame.height * scale)
+//            fitSize(view)
+        }
+    }
+    
+    @objc func handleRotate(_ gestureRecognizer:UIRotationGestureRecognizer) {
+        if let view = gestureRecognizer.view {
+            view.transform = view.transform.rotated(by: gestureRecognizer.rotation)
+            gestureRecognizer.rotation = 0
+        }
+    }
+    
+    //MARK:- UIGestureRecognizerDelegate Methods
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if (textIsEditing) {
+            return false
+        }
+        return true
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        
+        // If the gesture recognizers are on diferent views, do not allow
+        // simultaneous recognition.
+        if gestureRecognizer.view != otherGestureRecognizer.view {
+            return false
+        }
+
+        // If either gesture recognizer is a long press, do not allow
+        // simultaneous recognition.
+        if gestureRecognizer is UILongPressGestureRecognizer ||
+            otherGestureRecognizer is UILongPressGestureRecognizer {
+            return false
+        }
+    
+        // If the gesture recognizer's view isn't one of the squares, do not
+        // allow simultaneous recognition.
+        if gestureRecognizer.view is UITextView  {
+            return true
+        }
+    
+        return true
+    }
+    
+    //MARK:- UITextView Methods
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textIsEditing = true
+        initialRotation = textView.transform
+        initialFont = textView.font!
+        textView.transform = CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: 1.0, tx: 0.0, ty: 0.0)
+        textView.font = UIFont.systemFont(ofSize: 16, weight: .thin)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if (textView.text == "") {
+            textView.removeFromSuperview()
+        }
+        textView.transform = initialRotation
+        textView.font = initialFont
+        textIsEditing = false
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        fitSize(textView)
     }
 }
 
