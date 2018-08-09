@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITextViewDelegate, UIGestureRecognizerDelegate {
+class HomeViewController: UIViewController {
     
     var panGesture  = UIPanGestureRecognizer()
     var pinchGesture = UIPinchGestureRecognizer()
@@ -37,6 +37,11 @@ class HomeViewController: UIViewController, UITextViewDelegate, UIGestureRecogni
     }
     
     @IBAction func addText(_ sender: Any) {
+        let myview = UIView()
+        myview.frame.size = CGSize(width: self.view.frame.width, height: 34)
+        myview.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
+        myview.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)
+        
         let textView = UITextView()
         textView.text = ""
         textView.backgroundColor = UIColor.clear
@@ -45,28 +50,34 @@ class HomeViewController: UIViewController, UITextViewDelegate, UIGestureRecogni
         textView.autocorrectionType = .no
         textView.font = UIFont.systemFont(ofSize: 16, weight: .thin)
         textView.frame.size = CGSize(width: self.view.frame.width, height: 34)
-        textView.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
-        self.view.addSubview(textView)
+        textView.center = CGPoint(x: self.view.frame.width / 2, y: myview.frame.height / 2)
+        
+        myview.addSubview(textView)
+        self.view.addSubview(myview)
+        
         textView.delegate = self
         textView.becomeFirstResponder()
         textView.isScrollEnabled = false
 
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
-        textView.addGestureRecognizer(panGesture)
+        myview.addGestureRecognizer(panGesture)
         
         pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:)))
         textView.addGestureRecognizer(pinchGesture)
         
         rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotate(_:)))
-        textView.addGestureRecognizer(rotateGesture)
+        myview.addGestureRecognizer(rotateGesture)
         
         panGesture.delegate = self
         pinchGesture.delegate = self
         rotateGesture.delegate = self
         
-        //Enable multiple touch and user interaction for textfield
+        //Enable multiple touch and user interaction for textView and myview
         textView.isUserInteractionEnabled = true
         textView.isMultipleTouchEnabled = true
+        myview.isUserInteractionEnabled = true
+        myview.isMultipleTouchEnabled = true
+
     }
     
     func fitSize(_ textView: UITextView) {
@@ -86,25 +97,29 @@ class HomeViewController: UIViewController, UITextViewDelegate, UIGestureRecogni
     }
     
     @objc func handlePinch(_ gestureRecognizer:UIPinchGestureRecognizer) {
-        if let view = gestureRecognizer.view as? UITextView {
-//            let screenScaleFactor = UIScreen.main.scale
-//            view.transform = view.transform.scaledBy(x: gestureRecognizer.scale, y: gestureRecognizer.scale)
-//            view.textInputView.contentScaleFactor = screenScaleFactor * gestureRecognizer.scale;
-            let scale = gestureRecognizer.scale
-            view.font = UIFont(name: (view.font?.fontName)!, size: (view.font?.pointSize)! * scale)
-            gestureRecognizer.scale = 1
-//            view.frame.size = CGSize(width: view.frame.width * scale, height: view.frame.height * scale)
-//            fitSize(view)
-        }
+        let pinchView = gestureRecognizer.view as! UITextView
+        let parentView = (pinchView.superview)!
+        let pointSize = pinchView.font?.pointSize
+        let scale = gestureRecognizer.scale
+        let newSize = scale * pointSize!
+        pinchView.font = UIFont(name: (pinchView.font?.fontName)!, size: max(newSize, 10))
+        fitSize(pinchView)
+        let transform = parentView.transform
+        parentView.transform = CGAffineTransform(scaleX: scale, y: scale).concatenating(transform)
+        gestureRecognizer.scale = 1
     }
     
     @objc func handleRotate(_ gestureRecognizer:UIRotationGestureRecognizer) {
         if let view = gestureRecognizer.view {
-            view.transform = view.transform.rotated(by: gestureRecognizer.rotation)
+            let transform = view.transform
+            view.transform = CGAffineTransform(rotationAngle: gestureRecognizer.rotation).concatenating(transform)
             gestureRecognizer.rotation = 0
         }
     }
     
+}
+
+extension HomeViewController: UIGestureRecognizerDelegate {
     //MARK:- UIGestureRecognizerDelegate Methods
     
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -116,30 +131,26 @@ class HomeViewController: UIViewController, UITextViewDelegate, UIGestureRecogni
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         
-        // If the gesture recognizers are on diferent views, do not allow
-        // simultaneous recognition.
-        if gestureRecognizer.view != otherGestureRecognizer.view {
-            return false
-        }
-
         // If either gesture recognizer is a long press, do not allow
         // simultaneous recognition.
         if gestureRecognizer is UILongPressGestureRecognizer ||
             otherGestureRecognizer is UILongPressGestureRecognizer {
             return false
         }
-    
+        
         // If the gesture recognizer's view isn't one of the squares, do not
         // allow simultaneous recognition.
         if gestureRecognizer.view is UITextView  {
             return true
         }
-    
+        
         return true
     }
-    
-    //MARK:- UITextView Methods
+}
 
+//MARK:- UITextView Methods
+extension HomeViewController: UITextViewDelegate {
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         textIsEditing = true
         initialRotation = textView.transform
@@ -162,6 +173,7 @@ class HomeViewController: UIViewController, UITextViewDelegate, UIGestureRecogni
     }
 }
 
+//MARK:- Protocol
 extension HomeViewController: ChildToParentProtocol {
     func changeColor(to color: UIColor) {
         self.view.backgroundColor = color
