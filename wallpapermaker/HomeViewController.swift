@@ -14,8 +14,10 @@ class HomeViewController: UIViewController {
     var pinchGesture = UIPinchGestureRecognizer()
     var rotateGesture = UIRotationGestureRecognizer()
     
-    var initialRotation = CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: 1.0, tx: 0.0, ty: 0.0)
-    var initialFont = UIFont.systemFont(ofSize: 16, weight: .thin)
+    var textViewTransform = CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: 1.0, tx: 0.0, ty: 0.0)
+    var parentViewTransform = CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: 1.0, tx: 0.0, ty: 0.0)
+
+    var defaultFont = UIFont.systemFont(ofSize: 16, weight: .thin)
     
     var textIsEditing = false
 
@@ -40,7 +42,6 @@ class HomeViewController: UIViewController {
         let myview = UIView()
         myview.frame.size = CGSize(width: self.view.frame.width, height: 34)
         myview.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
-        myview.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.5)
         
         let textView = UITextView()
         textView.text = ""
@@ -60,13 +61,13 @@ class HomeViewController: UIViewController {
         textView.isScrollEnabled = false
 
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
-        myview.addGestureRecognizer(panGesture)
+        textView.addGestureRecognizer(panGesture)
         
         pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:)))
         textView.addGestureRecognizer(pinchGesture)
         
         rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotate(_:)))
-        myview.addGestureRecognizer(rotateGesture)
+        textView.addGestureRecognizer(rotateGesture)
         
         panGesture.delegate = self
         pinchGesture.delegate = self
@@ -84,6 +85,8 @@ class HomeViewController: UIViewController {
         let fixedSize = CGSize(width: textView.frame.size.width, height: textView.frame.size.height)
         let newSize = textView.sizeThatFits(CGSize(width: fixedSize.width, height: CGFloat.greatestFiniteMagnitude))
         textView.frame.size = CGSize(width: max(newSize.width, fixedSize.width), height: newSize.height)
+        textView.superview?.bounds = CGRect(x: textView.bounds.origin.x, y: textView.bounds.origin.y, width: textView.bounds.width, height: textView.bounds.height)
+
     }
     
     //MARK:- Handle Gestures Methods
@@ -91,7 +94,7 @@ class HomeViewController: UIViewController {
     @objc func handlePan(_ gestureRecognizer:UIPanGestureRecognizer) {
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
             let translation = gestureRecognizer.translation(in: self.view)
-            gestureRecognizer.view!.center = CGPoint(x: gestureRecognizer.view!.center.x + translation.x, y: gestureRecognizer.view!.center.y + translation.y)
+            gestureRecognizer.view!.superview?.center = CGPoint(x: (gestureRecognizer.view!.superview?.center.x)! + translation.x, y: (gestureRecognizer.view!.superview?.center.y)! + translation.y)
             gestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
         }
     }
@@ -101,16 +104,20 @@ class HomeViewController: UIViewController {
         let parentView = (pinchView.superview)!
         let pointSize = pinchView.font?.pointSize
         let scale = gestureRecognizer.scale
-        let newSize = scale * pointSize!
-        pinchView.font = UIFont(name: (pinchView.font?.fontName)!, size: max(newSize, 10))
-        fitSize(pinchView)
-        let transform = parentView.transform
-        parentView.transform = CGAffineTransform(scaleX: scale, y: scale).concatenating(transform)
+        let newSize = (scale * pointSize!) + 2.0
+
+        if (newSize < 150 && newSize > 10) {
+            pinchView.font = UIFont(name: (pinchView.font?.fontName)!, size: newSize)
+            fitSize(pinchView)
+            let transform = parentView.transform
+            parentView.transform = CGAffineTransform(scaleX: scale, y: scale).concatenating(transform)
+        }
+        
         gestureRecognizer.scale = 1
     }
     
     @objc func handleRotate(_ gestureRecognizer:UIRotationGestureRecognizer) {
-        if let view = gestureRecognizer.view {
+        if let view = gestureRecognizer.view?.superview {
             let transform = view.transform
             view.transform = CGAffineTransform(rotationAngle: gestureRecognizer.rotation).concatenating(transform)
             gestureRecognizer.rotation = 0
@@ -153,18 +160,23 @@ extension HomeViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         textIsEditing = true
-        initialRotation = textView.transform
-        initialFont = textView.font!
+        textViewTransform = textView.transform
+        parentViewTransform = (textView.superview?.transform)!
+        defaultFont = textView.font!
         textView.transform = CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: 1.0, tx: 0.0, ty: 0.0)
+        textView.superview?.transform = CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: 1.0, tx: 0.0, ty: 0.0)
         textView.font = UIFont.systemFont(ofSize: 16, weight: .thin)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if (textView.text == "") {
-            textView.removeFromSuperview()
+            textView.superview?.removeFromSuperview()
         }
-        textView.transform = initialRotation
-        textView.font = initialFont
+        textView.transform = textViewTransform
+        textView.superview?.transform = parentViewTransform
+        textView.font = defaultFont
+        
+
         textIsEditing = false
     }
     
