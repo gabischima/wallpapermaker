@@ -100,20 +100,24 @@ class HomeViewController: UIViewController {
     }
     
     @objc func handlePinch(_ gestureRecognizer:UIPinchGestureRecognizer) {
-        let pinchView = gestureRecognizer.view as! UITextView
-        let parentView = (pinchView.superview)!
-        let pointSize = pinchView.font?.pointSize
-        let scale = gestureRecognizer.scale
-        let newSize = (scale * pointSize!) + 2.0
-
-        if (newSize < 150 && newSize > 10) {
+        if (gestureRecognizer.state == .began || gestureRecognizer.state == .changed) {
+            let pinchView = gestureRecognizer.view as! UITextView
+            let parentView = (pinchView.superview)!
+            let pointSize = pinchView.font?.pointSize
+            let scale = gestureRecognizer.scale
+            var newSize = ((gestureRecognizer.velocity > 0) ? 1 : -1) * 1 + pointSize!;
+            
+            if (newSize < 13) {newSize = 13}
+            if (newSize > 150) {newSize = 150}
+            
             pinchView.font = UIFont(name: (pinchView.font?.fontName)!, size: newSize)
             fitSize(pinchView)
+            
             let transform = parentView.transform
             parentView.transform = CGAffineTransform(scaleX: scale, y: scale).concatenating(transform)
+            
+            gestureRecognizer.scale = 1
         }
-        
-        gestureRecognizer.scale = 1
     }
     
     @objc func handleRotate(_ gestureRecognizer:UIRotationGestureRecognizer) {
@@ -163,6 +167,7 @@ extension HomeViewController: UITextViewDelegate {
         textViewTransform = textView.transform
         parentViewTransform = (textView.superview?.transform)!
         defaultFont = textView.font!
+
         textView.transform = CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: 1.0, tx: 0.0, ty: 0.0)
         textView.superview?.transform = CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: 1.0, tx: 0.0, ty: 0.0)
         textView.font = UIFont.systemFont(ofSize: 16, weight: .thin)
@@ -176,7 +181,6 @@ extension HomeViewController: UITextViewDelegate {
         textView.superview?.transform = parentViewTransform
         textView.font = defaultFont
         
-
         textIsEditing = false
     }
     
