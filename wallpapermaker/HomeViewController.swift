@@ -16,8 +16,9 @@ class HomeViewController: UIViewController {
     
     var textViewTransform = CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: 1.0, tx: 0.0, ty: 0.0)
     var parentViewTransform = CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: 1.0, tx: 0.0, ty: 0.0)
+    var parentViewCenter = CGPoint(x: 0, y: 0)
 
-    var defaultFont = UIFont.systemFont(ofSize: 16, weight: .thin)
+    var defaultFont = UIFont.systemFont(ofSize: 16, weight: .regular)
     
     var textIsEditing = false
 
@@ -52,7 +53,7 @@ class HomeViewController: UIViewController {
         textView.textAlignment = .center
         textView.autocapitalizationType = .none
         textView.autocorrectionType = .no
-        textView.font = UIFont.systemFont(ofSize: 16, weight: .thin)
+        textView.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         textView.frame.size = CGSize(width: self.view.frame.width, height: 34)
         textView.center = CGPoint(x: self.view.frame.width / 2, y: myview.frame.height / 2)
         
@@ -117,7 +118,7 @@ class HomeViewController: UIViewController {
             fitSize(pinchView)
             
             let transform = parentView.transform
-            parentView.transform = CGAffineTransform(scaleX: scale, y: scale).concatenating(transform)
+            parentView.transform = CGAffineTransform(scaleX: CGFloat(scale), y: CGFloat(scale)).concatenating(transform)
             
             gestureRecognizer.scale = 1
         }
@@ -170,10 +171,13 @@ extension HomeViewController: UITextViewDelegate {
         textViewTransform = textView.transform
         parentViewTransform = (textView.superview?.transform)!
         defaultFont = textView.font!
-
+        parentViewCenter = (textView.superview?.center)!
+        
         textView.transform = CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: 1.0, tx: 0.0, ty: 0.0)
         textView.superview?.transform = CGAffineTransform(a: 1.0, b: 0.0, c: 0.0, d: 1.0, tx: 0.0, ty: 0.0)
-        textView.font = UIFont.systemFont(ofSize: 16, weight: .thin)
+        textView.superview?.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
+        textView.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        fitSize(textView)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -182,12 +186,19 @@ extension HomeViewController: UITextViewDelegate {
         }
         textView.transform = textViewTransform
         textView.superview?.transform = parentViewTransform
+        textView.superview?.center = parentViewCenter
         textView.font = defaultFont
-        
+        fitSize(textView)
+
         textIsEditing = false
     }
     
     func textViewDidChange(_ textView: UITextView) {
+
+//        let attr: [NSAttributedStringKey : Any] = [NSAttributedStringKey(rawValue: NSAttributedStringKey.backgroundColor.rawValue): UIColor.red]
+//        let attrString = NSAttributedString(string: textView.text, attributes: attr)
+        
+//        textView.attributedText = attrString
         fitSize(textView)
     }
 }
